@@ -10,7 +10,9 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "laravel-mix": "^6.0.0"
+        "laravel-mix": "^6.0.0",
+        "sass": "^1.48.0",
+        "sass-loader": "^12.4.0"
     },
     "dependencies": {
         "vanilla-cookieconsent": "^2.8.0"
