@@ -2,7 +2,7 @@
 
 ## Setup
 ```bash
-composer require code16/cookie-consent
+composer require code16/cookie-consent-js
 ```
 
 **Required**: publish assets (add this in composer.json `post-autoload-dump` scripts)
@@ -24,37 +24,22 @@ php artisan vendor:publish --provider="Code16\CookieConsent\CookieConsentService
 
 ## Usage
 
-### Default
 In your blade layout
 ```blade
 <head>
     {{-- ... --}}
-    @cookies
+    <x-cokie-consent::styles />
+    <x-cookies-allowed category="analytics">
         <script>
           {{-- some injected cookies --}}
         </script>
-    @endcookies
+    </x-cookies-allowed>
 </head>
 
 <body>
     {{-- end of the body --}}
-    @include('cookieConsent::index')
+    <x-cookie-consent::scripts />
 </body>
-```
-
-### With category
-To let the user manage multiple cookie categories (e.g. analytics, socials)
-Add the category key to the `@cookies` directive
-```blade
-<head>
-    {{-- ... --}}
-
-    @cookies('analytics')
-        <script>
-          {{-- some analytics script --}}
-        </script>
-    @endcookies
-</head>
 ```
 
 Also you must declare the cookie category in `config/cookie-consent.php` as follow
@@ -63,8 +48,13 @@ Also you must declare the cookie category in `config/cookie-consent.php` as foll
     'cookie_categories' => [
         'system' => [
             'required' => true,
+            'cookies' => []
         ],
-        'analytics' => [],
+        'analytics' => [
+            'cookies' => [
+                ['name' => '_ga', 'lifetime' => '2 years'],
+            ],
+        ],
     ]
 ];
 ```
@@ -74,7 +64,7 @@ Categories marked as `required` are cannot be opt-out by the user.
 To provide explanation texts in the manage dialog, add content to the lang file:
 ```php
 [
-    'manage' => [
+    'manage_modal' => [
         'title' => 'Manage cookies',
         'description' => 'About cookies...',
         'categories' => [
@@ -94,19 +84,5 @@ To provide explanation texts in the manage dialog, add content to the lang file:
 ### Show the manage modal from a link (e.g. cookies page)
 In the page:
 ```blade
-    @section('content')
-        <a href="#manage-cookies">Open manage cookies modal</a>
-    @endsection
-```
-
-### Intercept accept POST request
-If you need to add some custom logic when cookies are accepted (meaning: either when the used clicked on OK in the Bar or after setting his choices on the Modal), you can define a Middleware in the cookie-consent-middleware config key, which will be executed on the POST request.
-
-Example:
-```php
-    // in config/cookie-consent.php
-    return [
-        // ...
-        'middleware' => 'cookie-consent.accepted'
-    ];
+   <a href="#" onclick="cookieconsent.showSettings()">Open manage cookies modal</a>
 ```
