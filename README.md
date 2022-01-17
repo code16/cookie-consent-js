@@ -84,5 +84,5 @@ To provide explanation texts in the manage dialog, add content to the lang file:
 ### Show the manage modal from a link (e.g. cookies page)
 In the page:
 ```blade
-   <a href="#" onclick="cookieconsent.showSettings()">Open manage cookies modal</a>
+   <a href="#" onclick="return cookieconsent.showSettings()">Open manage cookies modal</a>
 ```
