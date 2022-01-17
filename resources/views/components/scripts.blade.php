@@ -63,6 +63,8 @@
         page_scripts: true,
 
         languages: @json($languages),
+        cookie_name: @json(config('cookie-consent.cookie_name')),
+        cookie_expiration: @json(config('cookie-consent.cookie_lifetime_in_days')),
         gui_options: {
             consent_modal: {
                 layout: 'box',

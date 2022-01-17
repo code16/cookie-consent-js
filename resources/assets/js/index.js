@@ -10,7 +10,7 @@ cookieconsent.run({
         lang.settings_modal.blocks.forEach(block => {
             block.cookie_table = block.cookie_table?.map(row => ({
                 ...row,
-                col2: row.col2 ?? location.host,
+                col2: row.col2 ?? location.hostname,
             }));
         });
         return lang;
