@@ -18,7 +18,7 @@ return [
                 ],
                 [
                     'name' => config('cookie-consent.cookie_name'),
-                    'lifetime' => config('cookie-consent.cookie_lifetime_in_days') . ' minutes'
+                    'lifetime' => config('cookie-consent.cookie_lifetime_in_days') . ' days'
                 ],
             ],
         ],
