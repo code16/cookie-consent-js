@@ -2,8 +2,13 @@ import 'vanilla-cookieconsent';
 
 window.cookieconsent = initCookieConsent();
 
-const config = window.cookieConsentConfig;
+const showSettings = cookieconsent.showSettings;
+cookieconsent.showSettings = delay => {
+    showSettings(delay);
+    return false;
+};
 
+const config = window.cookieConsentConfig;
 cookieconsent.run({
     ...config,
     languages: Object.values(config.languages).map(lang => {
