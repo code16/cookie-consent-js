@@ -1,0 +1,33 @@
+{
+  "name": "code16/cookie-consent-js",
+  "description": "Cookie consent handled front-only",
+  "authors": [
+    {
+      "name": "Antoine Guingand",
+      "email": "antoine@code16.fr"
+    }
+  ],
+  "require": {
+    "php": ">=8.0",
+    "illuminate/support": "^8.0",
+    "illuminate/view": "^8.0"
+  },
+  "require-dev": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Code16\\CookieConsent\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Code16\\CookieConsent\\CookieConsentServiceProvider"
+      ]
+    }
+  }
+}
