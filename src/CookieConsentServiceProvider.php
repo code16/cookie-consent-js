@@ -20,11 +20,12 @@ class CookieConsentServiceProvider extends ServiceProvider
         ], 'views');
 
         $this->publishes([
-            __DIR__.'/../resources/lang' => base_path('resources/lang/vendor/cookie-consent'),
+            __DIR__.'/../resources/lang' => base_path('lang/vendor/cookie-consent'),
         ], 'lang');
 
         $this->publishes([
-            __DIR__.'/../resources/assets/dist' => public_path('vendor/cookie-consent')
+            __DIR__.'/../dist' => public_path('vendor/cookie-consent'),
+            __DIR__.'/../resources/js/types.d.ts' => public_path('vendor/cookie-consent/types.d.ts'),
         ], 'assets');
 
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'cookie-consent');

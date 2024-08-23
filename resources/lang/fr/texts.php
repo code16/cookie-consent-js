@@ -2,16 +2,16 @@
 
 return [
     'consent_bar' => [
-        'title' => 'Consentement au dépôt de cookies',
-        'message' => 'Ce site nécessite l’utilisation de cookies pour fonctionner.',
-        'manage_button' => 'Paramétrer',
+        'title' => 'Gestion des cookies',
+        'message' => 'Nous utilisons des cookies pour améliorer votre expérience de navigation, personnaliser le contenu et les publicités, offrir des fonctionnalités de réseaux sociaux et analyser notre trafic. En cliquant sur "Accepter tous les cookies", vous consentez à leur utilisation. Vous pouvez personnaliser vos préférences en cliquant sur "Paramétrer les cookies". Pour en savoir plus, consultez notre Politique de Confidentialité.',
+        'manage_button' => 'Paramétrer les cookies',
         'reject_button' => 'Refuser',
         'accept_button' => 'Accepter',
     ],
     
     'manage_modal' => [
         'title' => 'Paramétrer les cookies utilisés sur ce site',
-        'description' => 'Les cookies utilisés sur ce site sont listés ci-dessous :',
+        'description' => '',
 
         'save_button' => 'Sauvegarder',
         'accept_all_button' => 'Tout accepter',
@@ -20,7 +20,7 @@ return [
         
         'columns' => [
             'cookie_name' => 'Nom',
-            'domain' => 'Domaine',
+            'description' => 'Description',
             'lifetime' => 'Durée de vie',
         ],
         'categories' => [

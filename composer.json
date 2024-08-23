@@ -9,10 +9,7 @@
   ],
   "require": {
     "php": ">=8.0",
-    "illuminate/support": "^8.0",
-    "illuminate/view": "^8.0"
-  },
-  "require-dev": {
+    "laravel/framework": "^11.21"
   },
   "autoload": {
     "psr-4": {

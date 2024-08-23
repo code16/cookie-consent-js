@@ -28,32 +28,35 @@ In your blade layout
 ```blade
 <head>
     {{-- ... --}}
-    <x-cokie-consent::styles />
+    <x-cookie-consent::scripts />
     <x-cookies-allowed category="analytics">
         <script>
           {{-- some injected cookies --}}
         </script>
     </x-cookies-allowed>
 </head>
-
-<body>
-    {{-- end of the body --}}
-    <x-cookie-consent::scripts />
-</body>
 ```
 
 Also you must declare the cookie category in `config/cookie-consent.php` as follow
 ```php
 [
-    'cookie_categories' => [
+    'categories' => [
         'system' => [
             'required' => true,
-            'cookies' => []
+            'services' => [
+                [
+                  'cookies' => []
+                ]
+            ]
         ],
         'analytics' => [
-            'cookies' => [
-                ['name' => '_ga', 'lifetime' => '2 years'],
-            ],
+            'services' => [
+                'google-analytics' => [
+                    'cookies' => [
+                        ['name' => '_ga', 'lifetime' => '2 years']
+                    ]
+                ]
+            ]
         ],
     ]
 ];
@@ -84,5 +87,5 @@ To provide explanation texts in the manage dialog, add content to the lang file:
 ### Show the manage modal from a link (e.g. cookies page)
 In the page:
 ```blade
-   <a href="#" onclick="return cookieconsent.showSettings()">Open manage cookies modal</a>
+   <a href="#manage-cookies">Open manage cookies modal</a>
 ```

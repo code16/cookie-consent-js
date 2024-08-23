@@ -1,0 +1,11 @@
+{
+  "resources/js/index.js": {
+    "file": "assets/index-CKBoKEic.js",
+    "name": "index",
+    "src": "resources/js/index.js",
+    "isEntry": true,
+    "css": [
+      "assets/index-Bro3eUle.css"
+    ]
+  }
+}

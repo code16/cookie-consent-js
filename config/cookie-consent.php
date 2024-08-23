@@ -7,19 +7,30 @@ return [
     'cookie_lifetime_in_days' => 182,
     
     'locales' => ['fr'],
+    
+    'modal' => false,
+    
+    'revision' => 0, // increment this if services are added / modified
 
     'categories' => [
         'system' => [
-            'required' => true,
-            'cookies' => [
+            'readOnly' => true,
+            'services' => [
                 [
-                    'name' => config('session.cookie'),
-                    'lifetime' =>config('session.lifetime') . ' minutes'
-                ],
-                [
-                    'name' => config('cookie-consent.cookie_name'),
-                    'lifetime' => config('cookie-consent.cookie_lifetime_in_days') . ' days'
-                ],
+                    'cookies' => [
+                        [
+                            'name' => env(
+                                'SESSION_COOKIE',
+                                Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
+                            ),
+                            'lifetime' => env('SESSION_LIFETIME', 120).' minutes'
+                        ],
+                        [
+                            'name' => 'cc_cookie',
+                            'lifetime' => '182 days'
+                        ],
+                    ],
+                ]
             ],
         ],
     ],
