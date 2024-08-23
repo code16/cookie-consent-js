@@ -28,7 +28,7 @@ In your blade layout
 ```blade
 <head>
     {{-- ... --}}
-    <x-cokie-consent::styles />
+    <x-cookie-consent::styles />
     <x-cookies-allowed category="analytics">
         <script>
           {{-- some injected cookies --}}
