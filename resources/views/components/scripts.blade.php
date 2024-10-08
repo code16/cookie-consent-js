@@ -63,30 +63,29 @@
         });
     @endphp
 
-    @if(config('cookie-consent.enabled'))
-        <script>
-            document.querySelector('#cookie-consent-script').addEventListener('load', () => {
-                window.CookieConsent.run({
-                    cookie: {
-                        name: '{{ config('cookie-consent.cookie_name') }}',
-                        expiresAfterDays: {{ config('cookie-consent.cookie_lifetime_in_days') }}
-                    },
-                    categories: {{ Js::from(config('cookie-consent.categories')) }},
-                    language: {
-                        default: '{{ config('app.locale') }}',
-                        translations: {{ Js::from($translations) }}
-                    },
-                    disablePageInteraction: {{ JS::from(config('cookie-consent.modal')) }},
-                    guiOptions: {
-                        consentModal: {
-                            position: '{{ config('cookie-consent.modal') ? 'middle center' : 'bottom right' }}',
-                        }
-                    },
-                    revision: {{ config('cookie-consent.revision') }}
-                });
+    <script>
+        document.querySelector('#cookie-consent-script').addEventListener('load', () => {
+            window.CookieConsent.run({
+                autoShow: {{ Js::from(config('cookie-consent.enabled')) }},
+                cookie: {
+                    name: '{{ config('cookie-consent.cookie_name') }}',
+                    expiresAfterDays: {{ config('cookie-consent.cookie_lifetime_in_days') }}
+                },
+                categories: {{ Js::from(config('cookie-consent.categories')) }},
+                language: {
+                    default: '{{ config('app.locale') }}',
+                    translations: {{ Js::from($translations) }}
+                },
+                disablePageInteraction: {{ JS::from(config('cookie-consent.modal')) }},
+                guiOptions: {
+                    consentModal: {
+                        position: '{{ config('cookie-consent.modal') ? 'middle center' : 'bottom right' }}',
+                    }
+                },
+                revision: {{ config('cookie-consent.revision') }}
             });
-        </script>
-    @endif
+        });
+    </script>
     <script>
         document.addEventListener('alpine:init', () => {
             window.Alpine.store('cookieConsent', {
