@@ -13,6 +13,10 @@
     {!! $cachedScript !!}
 @else
     @php
+        ob_start();
+    @endphp
+
+    @php
         /** https://cookieconsent.orestbida.com/reference/configuration-reference.html#language-translations */
         $translations = collect(config('cookie-consent.locales'))->mapWithKeys(function ($locale) {
             return [
@@ -111,6 +115,9 @@
         });
     </script>
 
-    @php(cache()->set($cacheKey, trim(ob_get_contents()), now()->addHours(1)))
+    @php
+        cache()->set($cacheKey, trim(ob_get_contents()), now()->addHour());
+        ob_end_flush();
+    @endphp
 @endif
 
