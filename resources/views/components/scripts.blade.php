@@ -49,6 +49,7 @@
                                         'description' =>  __('cookie-consent::texts.manage_modal.columns.description', [], $locale),
                                         'duration' =>  __('cookie-consent::texts.manage_modal.columns.lifetime', [], $locale),
                                     ],
+                                    'caption' => __("cookie-consent::texts.manage_modal.categories.$key.title", [], $locale),
                                     'body' => collect($category['services'])->pluck('cookies')->flatten(1)->map(fn ($cookie) => [
                                         'name' =>  $cookie['name'],
                                         'description' => '',
